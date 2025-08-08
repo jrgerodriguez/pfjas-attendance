@@ -97,7 +97,7 @@ try {
 
         try {
 
-          const bufferUrl = `https://qr-generator-ldfd.onrender.com/confirm?token=${participante.qrToken}`
+          const bufferUrl = `https://pfjas-attendance.onrender.com/registrar?token=${participante.qrToken}`
 
           const qrBuffer = await createBuffer(bufferUrl);
 
