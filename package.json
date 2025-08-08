@@ -19,7 +19,7 @@
     "winston": "^3.17.0",
     "xlsx": "^0.18.5"
   },
-  "main": "enviarQr.js",
+  "main": "server.js",
   "author": "Jorge Menjivar Rodriguez",
   "license": "ISC"
 }
