@@ -31,6 +31,8 @@ app.get("/registrar", async (req, res) => {
 
     participante.scanned = true;
     await participante.save();
+
+    return res.redirect('/scan-success.html');
     
   } catch (error) {
     console.error('Error confirming attendance:', error);
