@@ -1,6 +1,7 @@
 import express from "express";
 import connectDB from "./db/connection.js";
 import Participant from "./models/Participant.js";
+import routes from './routes/index.js'
 
 // VARIABLES
 const app = express();
@@ -14,31 +15,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 // ROUTES AND CONTROLLERS
-app.get("/registrar", async (req, res) => {
-  const token = req.query.token;
-
-  try {
-
-    const participante = await Participant.findOne({ qrToken: token });
-
-    if (!participante) {
-        return res.redirect('/scan-fail.html')
-    }
-
-    if (participante.scanned) {
-        return res.redirect('/already-scanned.html'); 
-    }
-
-    participante.scanned = true;
-    await participante.save();
-
-    return res.redirect('/scan-success.html');
-    
-  } catch (error) {
-    console.error('Error confirming attendance:', error);
-    return res.status(500).send('Internal Server Error');
-  }
-});
+app.use("/", routes)
 
 // START SERVER
 async function runServer() {
