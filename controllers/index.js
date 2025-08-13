@@ -1,3 +1,5 @@
+import Participant from "../models/Participant.js";
+
 async function registrarAsistencia(req, res) {
   const token = req.query.token;
 
@@ -22,4 +24,4 @@ async function registrarAsistencia(req, res) {
   }
 }
 
-export {registrarAsistencia}
+export  {registrarAsistencia}

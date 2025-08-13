@@ -1,8 +1,8 @@
 import express from "express";
-import controller from "../controllers/index.js"
+import {registrarAsistencia} from "../controllers/index.js"
 
 const router = express.Router();
 
-router.get("/registrar", controller.registrarAsistencia);
+router.get("/registrar", registrarAsistencia);
 
 export default router
