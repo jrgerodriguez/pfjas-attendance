@@ -1,6 +1,5 @@
 import express from "express";
 import connectDB from "./db/connection.js";
-import Participant from "./models/Participant.js";
 import routes from './routes/index.js'
 
 // VARIABLES

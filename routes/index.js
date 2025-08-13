@@ -1,5 +1,8 @@
 import express from "express";
+import Participant from "./models/Participant.js";
+
 const router = express.Router();
+
 
 router.get("/registrar", async (req, res) => {
   const token = req.query.token;
