@@ -1,7 +1,7 @@
 import xlsx from 'xlsx';
 import connectDB from './db/connection.js';
 import mongoose from 'mongoose';
-import Participant from './models/Participant.js';
+import model from './models/index.js';
 import { randomBytes } from "crypto";
 
 async function insertToMongo() {
@@ -45,7 +45,7 @@ const mappedData = data.map(element => ({
 
 // Insert the info to Mongo using the mongoose schema
     try {
-        await Participant.insertMany(mappedData);
+        await model.Participant.insertMany(mappedData);
         console.log(`✅ ${mappedData.length } elementos guardados con exito`)
     } catch (error) {
         console.error('❌ Error al guardar:', error)

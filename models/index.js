@@ -33,5 +33,13 @@ const participantSchema = new Schema({
   scannedAt: { type: Date, default: null },
 });
 
+const leaderSchema = new Schema({
+  email: String,
+  password: String
+})
+
 const Participant = mongoose.model("Participant", participantSchema);
-export default Participant;
+const Leader = mongoose.model("Leader", leaderSchema)
+
+const models = {Participant, Leader}
+export default models;

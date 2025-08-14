@@ -1,14 +1,14 @@
 import xlsx from 'xlsx';
 import connectDB from './db/connection.js';
 import mongoose from 'mongoose';
-import Participant from './models/Participant.js';
+import model from './models/index.js';
 
 async function generateReport() {
     try {
         
         connectDB();
 
-        const sinEmail = await Participant.find({
+        const sinEmail = await model.Participant.find({
           $or: [
             { email: { $exists: false } },
             { email: { $eq: "" } },

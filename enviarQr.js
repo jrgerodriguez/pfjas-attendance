@@ -1,6 +1,6 @@
 import mongoose from "mongoose";
 import connectDB from "./db/connection.js";
-import Participant from "./models/Participant.js";
+import model from "./models/index.js";
 import nodemailer from "nodemailer";
 import QRCode from "qrcode";
 import logger from "./logger.js";
@@ -59,7 +59,7 @@ try {
   
   await connectDB();
 
-  const data = await Participant.find({
+  const data = await model.Participant.find({
     qrEnviado: false,
     email: {
     $exists: true,
@@ -132,7 +132,7 @@ try {
 
           if (result.accepted && result.accepted.includes(participante.email)) {
 
-            await Participant.findByIdAndUpdate(participante._id, {qrEnviado: true,});
+            await model.Participant.findByIdAndUpdate(participante._id, {qrEnviado: true,});
             correosEnviados++;
             logger.info(`✅ Enviado a ${participante.nombres} al correo ${participante.email}`);
 

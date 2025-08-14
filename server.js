@@ -1,10 +1,10 @@
 import express from "express";
 import connectDB from "./db/connection.js";
 import routes from './routes/index.js'
+import cors from "cors";
 
 // VARIABLES
 const app = express();
-const router = express.Router();
 
 const PORT = 5500;
 
@@ -12,9 +12,11 @@ const PORT = 5500;
 app.use(express.static('public'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+app.use(cors());
 
 // ROUTES AND CONTROLLERS
 app.use("/", routes)
+
 
 // START SERVER
 async function runServer() {
