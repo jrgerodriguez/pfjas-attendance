@@ -2,6 +2,7 @@ import express from "express";
 import connectDB from "./db/connection.js";
 import routes from './routes/index.js'
 import cors from "cors";
+import cookieParser from 'cookie-parser';
 
 // VARIABLES
 const app = express();
@@ -13,6 +14,7 @@ app.use(express.static('public'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cors());
+app.use(cookieParser());
 
 // ROUTES AND CONTROLLERS
 app.use("/", routes)

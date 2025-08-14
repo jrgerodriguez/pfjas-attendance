@@ -9,6 +9,7 @@
   "description": "Registra asistencia al campamento JAS 2025 en Mongo y enviar un QR para marcar asistencia",
   "dependencies": {
     "bcryptjs": "^3.0.2",
+    "cookie-parser": "^1.4.7",
     "cors": "^2.8.5",
     "dotenv": "^17.2.0",
     "express": "^5.1.0",
