@@ -87,7 +87,8 @@ async function iniciarSesion(req, res) {
     httpOnly: true,
     secure: process.env.NODE_ENV !== 'development',
     maxAge: twoHours,
-    sameSite: 'strict' 
+    sameSite: 'lax',
+    path: '/'
   })
 
   return res.status(200).json({ message: 'Login Exitoso.'})
