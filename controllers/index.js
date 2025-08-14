@@ -54,6 +54,9 @@ async function crearUsuarioLider(req, res) {
 async function iniciarSesion(req, res) {
   const {email, password} = req.body
 
+  res.json(req.body);
+  return
+
   try {
   const leaderData = await model.Leader.findOne({email})
 
