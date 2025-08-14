@@ -15,7 +15,7 @@ formulario.addEventListener("submit", async (e) => {
   try {
     const response = await fetch("/iniciar-sesion", {
         method: "POST",
-        header: {
+        headers: {
             "Content-Type": "application/json",
         },
         body: JSON.stringify(data)
