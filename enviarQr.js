@@ -106,20 +106,36 @@ try {
             to: participante.email,
             subject: "Tu código QR para el Campamento JAS 2025.",
             html: `
-              <div style="font-family: Arial, sans-serif; max-width: 600px; margin: auto; background-color: #ffffff; padding: 20px; border: 1px solid #e0e0e0; border-radius: 8px;">
-                <h2 style="color: #333333;">Hola ${participante.nombres},</h2>
-                <p style="font-size: 16px; color: #555555;">
-                  Este es tu <strong>código QR único</strong> para el evento. Por favor, muéstralo al momento de ingresar:
-                </p>
-                <div style="text-align: center; margin: 30px 0;">
-                  <img src="cid:qrcode" alt="Código QR" style="width: 200px; height: 200px;" />
+              <div style="font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; max-width: 600px; margin: 40px auto; background-color: #f9f9f9; padding: 30px; border: 1px solid #dcdcdc; border-radius: 10px; box-shadow: 0 4px 10px rgba(0,0,0,0.05);">
+                
+                <div style="text-align: center; margin-bottom: 30px;">
+                  <img src="cid:logoimg" alt="Logo" style="max-width: 220px;" />
                 </div>
-                <p style="font-size: 14px; color: #777777;">
-                  Si tienes alguna pregunta, no dudes en contactarnos. ¡Nos vemos pronto!
+
+                <h2 style="color: #222222; font-size: 22px; margin-bottom: 20px; text-align: center;">Hola ${participante.nombres},</h2>
+
+                <p style="font-size: 16px; color: #555555; line-height: 1.6;">
+                  Este es tu <strong>código QR único</strong> para el <strong>Campamento JAS 2025</strong>. Por favor, preséntalo al momento de ingresar para garantizar tu acceso.
                 </p>
+
+                <div style="text-align: center; margin: 40px 0;">
+                  <img src="cid:qrcode" alt="Código QR" style="width: 220px; height: 220px; border: 1px solid #e0e0e0; padding: 10px; border-radius: 8px;" />
+                </div>
+
+                <p style="font-size: 14px; color: #777777; line-height: 1.5; text-align: center;">
+                  Si tienes alguna pregunta, no dudes en contactarnos o comunicarte con tu representante JAS de barrio o estaca. <br>¡Nos vemos pronto!
+                </p>
+
+                <div style="text-align: center; margin-top: 30px; font-size: 12px; color: #aaaaaa;">
+                </div>
               </div>
             `,
             attachments: [
+              {
+                filename: "logo.jpg",
+                path: "public/images/logo.jpg",
+                cid: "logoimg"
+              },
               {
                 filename: "qrcode.png",
                 content: qrBuffer,

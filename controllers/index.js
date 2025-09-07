@@ -41,7 +41,8 @@ async function crearUsuarioLider(req, res) {
       password: hashedPassword,
     };
 
-    await model.Leader.insertOne(newLeader);
+    const leader = new model.Leader(newLeader);
+    await leader.save()
     res.status(201).json({ message: "The new user has been successfully created." });
   } catch (error) {
     console.error(error);
