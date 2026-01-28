@@ -7,8 +7,16 @@ import { randomBytes } from "crypto";
 async function insertToMongo() {
     await connectDB();
 
+// Format date from number
+function excelDateToJSDate(excelDate) {
+    if(!excelDate) return null;
+    if(typeof excelDate !== 'number') return null
+    
+    return new Date((excelDate - 25569) * 86400 * 1000);
+}
+
 // Load file
-const workbook = xlsx.readFile('./inscritos2.xlsx')
+const workbook = xlsx.readFile('./participantes_completo.xlsx')
 
 // Get first sheet
 const sheetName = workbook.SheetNames[0]
@@ -21,8 +29,8 @@ const data = xlsx.utils.sheet_to_json(worksheet)
 const mappedData = data.map(element => ({
     nombres: element['nombres'] || '',
     apellidos: element['apellidos'] || '',
-    fechaDeNacimiento: element['fecha de nacimiento'] || '',
-    dui: element['numero de dui']?.toString() || '',
+    fechaDeNacimiento: excelDateToJSDate(element['fecha de nacimiento']),
+    dui: element['dui']?.toString() || '',
     sexo: element['sexo'] || '',
     departamento: element['departamento'] || '',
     estaca: element['estaca'] || '',
@@ -31,12 +39,13 @@ const mappedData = data.map(element => ({
     tallaCamisa: element['talla de camisa'] || '',
     email: element['email'] || '',
     contactoEmergencia: element['contacto emergencia']?.toString() || '',
-    instituto: (element['inscrito a instituto?'] || '').toLowerCase() === 'si',
-    condicionFisicaOMedica: (element['padece alguna condicion fisica o medica?'] || '').toLowerCase() === 'si',
+    telefonoContactoEmergencia: element['telefono contacto emergencia']?.toString() || '',
+    instituto: element['inscrito a instituto?'] || '',
+    condicionFisicaOMedica: element['padece alguna condicion fisica o medica?'] || '',
     condicionFisicaOMedicaComentario: element['si responde si especifica que condicion'] || '',
-    alergia: (element['alergia?'] || '').toLowerCase() === 'si',
+    alergia: element['alergia?'] || '',
     alergiaComentario: element['si responde si especifica que tipo de alergia'] || '',
-    medicamento: (element['tomas medicamento??'] || '').toLowerCase() === 'si',
+    medicamento: element['tomas medicamento?'] || '',
     medicamentoComentario: element['si responde si especifica que medicamento'] || '',
     queEsperaAprender: element['que esperas aprender?'] || '',
     comentarioStaff: element['comentario para el staff'] || '',

@@ -1,0 +1,7 @@
+POST http://localhost:5500/crearUsuarioLider
+Content-Type: application/json
+
+{
+    "email": "menjivar.jorge.93@gmail.com",
+    "password": "menjivar.jorge.93@gmail.com"
+}

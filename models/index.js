@@ -4,7 +4,9 @@ const { Schema } = mongoose;
 const participantSchema = new Schema({
   nombres: String,
   apellidos: String,
-  fechaDeNacimiento: String,
+  fechaDeNacimiento: {
+    type: Date
+  },
   dui: String,
   sexo: String,
   departamento: String,
@@ -18,12 +20,13 @@ const participantSchema = new Schema({
     lowercase: true,
   },
   contactoEmergencia: String,
-  instituto: Boolean,
-  condicionFisicaOMedica: Boolean,
+  telefonoContactoEmergencia: String,
+  instituto: String,
+  condicionFisicaOMedica: String,
   condicionFisicaOMedicaComentario: String,
-  alergia: Boolean,
+  alergia: String,
   alergiaComentario: String,
-  medicamento: Boolean,
+  medicamento: String,
   medicamentoComentario: String,
   queEsperaAprender: String,
   comentarioStaff: String,
